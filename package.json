@@ -1,0 +1,11 @@
+{
+  "name": "paradigm",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "private": true,
+  "dependencies": {
+    "@tamagui/babel-plugin": "^1.0.1-beta.141",
+    "tamagui": "^1.0.1-beta.141",
+    "tamagui-loader": "^1.0.1-beta.141"
+  }
+}
