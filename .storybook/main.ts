@@ -8,16 +8,16 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-react-native-web',
   ],
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: { fastRefresh: true },
-  },
+  framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
   },
   typescript: {
     check: false,
-    skipBabel: false,
+  },
+  // @ts-ignore this isn't correct in the types
+  reactOptions: {
+    fastRefresh: false,
   },
 }
 
