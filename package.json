@@ -5,17 +5,16 @@
   "private": true,
   "dependencies": {
     "tamagui": "^1.0.1-beta.141",
-    "tamagui-loader": "^1.0.1-beta.141"
-  },
-  "peerDependencies": {
-    "eslint": ">=8.22.0",
-    "eslint-config-next": ">=12.2.5",
+    "tamagui-loader": "^1.0.1-beta.141",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "typescript": ">=3.7.5"
   },
+  "peerDependencies": {
+    "eslint": ">=8.22.0",
+    "eslint-config-next": ">=12.2.5"
+  },
   "scripts": {
-    "dev": "next dev",
     "storybook": "npx storybook dev",
     "build-storybook": "npx storybook build"
   },

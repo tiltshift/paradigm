@@ -12,6 +12,7 @@ const config: StorybookConfig = {
   },
   typescript: {
     check: false,
+    skipBabel: false
   },
 }
 
