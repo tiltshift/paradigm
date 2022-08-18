@@ -1,10 +1,9 @@
 {
   "name": "paradigm",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "private": true,
   "dependencies": {
-    "next": "12.2.5",
     "tamagui": "^1.0.1-beta.141",
     "tamagui-loader": "^1.0.1-beta.141"
   },
@@ -16,6 +15,24 @@
     "typescript": ">=3.7.5"
   },
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "storybook": "npx storybook dev",
+    "build-storybook": "npx storybook build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-docs": "^7.0.0-alpha.23",
+    "@storybook/addon-essentials": "^7.0.0-alpha.23",
+    "@storybook/addon-interactions": "^7.0.0-alpha.23",
+    "@storybook/addon-links": "^7.0.0-alpha.23",
+    "@storybook/react-webpack5": "^7.0.0-alpha.23",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5",
+    "storybook": "^7.0.0-alpha.23",
+    "ts-node": "^10.9.1"
   }
 }
