@@ -28,9 +28,11 @@
     "@storybook/addon-essentials": "^7.0.0-alpha.23",
     "@storybook/addon-interactions": "^7.0.0-alpha.23",
     "@storybook/addon-links": "^7.0.0-alpha.23",
+    "@storybook/addon-react-native-web": "^0.0.18",
     "@storybook/react-webpack5": "^7.0.0-alpha.23",
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.5",
+    "react-native-web": "~0.18.7",
     "storybook": "^7.0.0-alpha.23",
     "ts-node": "^10.9.1"
   }

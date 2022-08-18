@@ -2,7 +2,12 @@ import type { StorybookConfig } from '@storybook/core-common'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-react-native-web',
+  ],
   framework: {
     name: '@storybook/react-webpack5',
     options: { fastRefresh: true },
@@ -12,7 +17,7 @@ const config: StorybookConfig = {
   },
   typescript: {
     check: false,
-    skipBabel: false
+    skipBabel: false,
   },
 }
 
