@@ -1,7 +1,10 @@
 {
-  "name": "paradigm",
-  "version": "1.0.0",
-  "main": "src/index.ts",
+  "name": "@tiltshift/paradigm",
+  "version": "0.0.0",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "index.ts",
   "private": true,
   "dependencies": {
     "@tamagui/babel-plugin": "^1.27.1",

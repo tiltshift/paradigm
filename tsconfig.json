@@ -1,7 +1,9 @@
 {
-  "extends": "../tsconfig.base",
+  "extends": "../../tsconfig.base",
   "include": [
     "src",
+    "components",
+    "config/animations.ts",
   ],
   "compilerOptions": {
     "composite": true,
