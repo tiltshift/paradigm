@@ -5,9 +5,9 @@
   "private": true,
   "dependencies": {
     "@tamagui/babel-plugin": "^1.27.1",
+    "@tamagui/themes": "^1.27.3",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
-    "tamagui": "^1.27.1",
-    "tamagui-loader": "^1.27.1"
+    "tamagui": "^1.27.1"
   },
   "peerDependencies": {
     "eslint": ">=8.22.0",
