@@ -4,8 +4,10 @@
   "main": "src/index.ts",
   "private": true,
   "dependencies": {
-    "tamagui": "^1.0.1-beta.141",
-    "tamagui-loader": "^1.0.1-beta.141"
+    "@tamagui/babel-plugin": "^1.27.1",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "tamagui": "^1.27.1",
+    "tamagui-loader": "^1.27.1"
   },
   "peerDependencies": {
     "eslint": ">=8.22.0",
