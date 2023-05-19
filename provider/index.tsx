@@ -1,6 +1,7 @@
 import { useColorScheme } from 'react-native'
+import { TamaguiProvider, TamaguiProviderProps } from 'tamagui'
 
-import { TamaguiProvider, TamaguiProviderProps, config } from '../'
+import { config } from '../config/tamagui.config'
 
 export function ParadigmProvider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
   const scheme = useColorScheme()
