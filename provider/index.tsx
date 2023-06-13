@@ -1,3 +1,5 @@
+import './platform'
+
 import { useColorScheme } from 'react-native'
 import { TamaguiProvider, TamaguiProviderProps } from 'tamagui'
 
