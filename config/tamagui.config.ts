@@ -5,7 +5,7 @@ import { createFont, createTamagui } from 'tamagui'
 import { animations } from './animations'
 
 const headingFont = createFont({
-  family: 'Helvetica, Arial, sans-serif',
+  family: 'Effra-Regular',
   size: {
     6: 15,
   },
@@ -44,6 +44,7 @@ export const config = createTamagui({
   shorthands: {},
   fonts: {
     heading: headingFont,
+    body: headingFont,
   },
   themes,
   tokens,
