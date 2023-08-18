@@ -4,14 +4,14 @@
   "sideEffects": [
     "*.css"
   ],
-  "main": "index.ts",
   "private": true,
+  "main": "index.ts",
   "dependencies": {
-    "@tamagui/babel-plugin": "^1.30.0",
-    "@tamagui/themes": "^1.30.0",
+    "@tamagui/babel-plugin": "latest",
+    "@tamagui/themes": "latest",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "expo-font": "~11.1.1",
-    "tamagui": "^1.30.0"
+    "tamagui": "latest"
   },
   "peerDependencies": {
     "eslint": ">=8.22.0",
@@ -19,31 +19,11 @@
     "typescript": ">=3.7.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/preset-env": "^7.21.5",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.21.5",
-    "@mdx-js/react": "^2.3.0",
-    "@storybook/addon-docs": "7.0.10",
-    "@storybook/addon-essentials": "7.0.10",
-    "@storybook/addon-interactions": "7.0.10",
-    "@storybook/addon-links": "7.0.10",
-    "@storybook/addon-react-native-web": "^0.0.20",
-    "@storybook/react": "7.0.10",
-    "@storybook/react-webpack5": "7.0.10",
-    "@storybook/testing-library": "^0.1.0",
-    "babel-loader": "^9.1.2",
-    "chromatic": "^6.17.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native-web": "~0.19.4",
     "storybook": "7.0.17",
     "ts-node": "^10.9.1"
-  },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=05fb77a899e1"
   },
   "readme": "readme.md",
   "_id": "paradigm@1.0.0"
