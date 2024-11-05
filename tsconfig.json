@@ -1,11 +1,11 @@
 {
-  "extends": "../../tsconfig.base",
+  "extends": "../../tsconfig.client",
   "include": [
-    "src",
-    "components",
-    "config/animations.ts",
+    "../*.ts",
+    "../*.tsx"
   ],
   "compilerOptions": {
+    "noEmit": true,
     "composite": true,
     "jsx": "react-jsx"
   },
