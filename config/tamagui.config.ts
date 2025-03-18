@@ -34,6 +34,8 @@ export const tamaguiConfig = createTamagui({
   },
 })
 
+export default tamaguiConfig
+
 export type AppConfig = typeof tamaguiConfig
 
 declare module 'tamagui' {
