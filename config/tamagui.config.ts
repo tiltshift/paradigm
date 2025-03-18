@@ -1,11 +1,11 @@
-import { createMedia } from '@tamagui/react-native-media-driver'
+
 import { themes, tokens } from '@tamagui/themes'
 import { createTamagui } from 'tamagui'
 
 import { animations } from './animations'
 import { headingFont } from './fonts'
 
-export const config = createTamagui({
+export const tamaguiConfig = createTamagui({
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
@@ -16,7 +16,7 @@ export const config = createTamagui({
   },
   themes,
   tokens,
-  media: createMedia({
+  media: {
     xs: { maxWidth: 660 },
     sm: { maxWidth: 800 },
     md: { maxWidth: 1020 },
@@ -31,7 +31,11 @@ export const config = createTamagui({
     tall: { minHeight: 820 },
     hoverNone: { hover: 'none' },
     pointerCoarse: { pointer: 'coarse' },
-  }),
+  },
 })
 
-export type AppConfig = typeof config
+export type AppConfig = typeof tamaguiConfig
+
+declare module 'tamagui' {
+  interface TamaguiCustomConfig extends AppConfig { }
+}
