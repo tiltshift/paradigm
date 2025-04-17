@@ -13,7 +13,7 @@ export function ParadigmProvider({ children, ...rest }: Omit<TamaguiProviderProp
     <TamaguiProvider
       config={config}
       disableInjectCSS
-      defaultTheme={colorScheme === 'dark' ? 'dark' : 'light'}
+      defaultTheme={colorScheme === 'dark' ? 'dark_blue' : 'light_blue'}
       {...rest}
     >
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>{children}</ThemeProvider>
