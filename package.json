@@ -7,6 +7,7 @@
   "main": "index.ts",
   "type": "module",
   "dependencies": {
+    "@expo-google-fonts/nunito-sans": "^0.3.0",
     "@tamagui/vite-plugin": "^1.126.1",
     "expo": "~52.0.38",
     "expo-constants": "~17.0.8",

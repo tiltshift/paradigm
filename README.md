@@ -46,11 +46,6 @@ module.exports = function (api) {
 
 ### load fonts
 
-be sure to use `useAppLoading` from tools to load paradigm assets via `loadResources`:
+Make sure to call `SplashScreen.preventAutoHideAsync();` globally early while your app is loading:
 
-```
-import { loadResources } from '@tiltshift/paradigm/assets/loadResources'
-
-
-const appLoaded = useAppLoading(loadResources)
-```
+https://docs.expo.dev/versions/latest/sdk/splash-screen/#splashscreenpreventautohideasync
