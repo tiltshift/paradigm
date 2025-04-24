@@ -3,7 +3,7 @@ import { themes, tokens } from '@tamagui/themes'
 import { createTamagui } from 'tamagui'
 
 import { animations } from './animations'
-import { headingFont } from './fonts'
+import { Nuntito } from './fonts'
 
 export const tamaguiConfig = createTamagui({
   animations,
@@ -11,8 +11,8 @@ export const tamaguiConfig = createTamagui({
   themeClassNameOnRoot: true,
   shorthands: {},
   fonts: {
-    heading: headingFont,
-    body: headingFont,
+    heading: Nuntito,
+    body: Nuntito,
   },
   themes,
   tokens,

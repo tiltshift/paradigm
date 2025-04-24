@@ -45393,21 +45393,20 @@ var animations = createAnimations({
 });
 
 // config/fonts.ts
-var headingFont = (0, import_core58.createFont)({
-  family: "Effra-Regular",
+var Nuntito = (0, import_core58.createFont)({
+  family: '"Nunito Sans"',
   size: {
-    true: 15,
-    3: 15,
-    4: 15,
-    6: 15,
-    7: 15
+    1: 12,
+    2: 14,
+    3: 16,
+    4: 18,
+    5: 20,
+    6: 24,
+    7: 30
   },
   weight: {
-    3: "500",
-    4: "700"
-  },
-  face: {
-    700: { normal: "InterBold" }
+    6: "600",
+    8: "800"
   }
 });
 
@@ -45418,8 +45417,8 @@ var tamaguiConfig = createTamagui({
   themeClassNameOnRoot: true,
   shorthands: {},
   fonts: {
-    heading: headingFont,
-    body: headingFont
+    heading: Nuntito,
+    body: Nuntito
   },
   themes,
   tokens,
