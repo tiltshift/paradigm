@@ -4,14 +4,14 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useColorScheme } from 'react-native'
 import { TamaguiProvider, TamaguiProviderProps } from 'tamagui'
 
-import { config } from '../config/tamagui.config'
+import { tamaguiConfig } from '../config/tamagui.config'
 
 export function ParadigmProvider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
   const colorScheme = useColorScheme()
 
   return (
     <TamaguiProvider
-      config={config}
+      config={tamaguiConfig}
       disableInjectCSS
       defaultTheme={colorScheme === 'dark' ? 'dark_blue' : 'light_blue'}
       {...rest}

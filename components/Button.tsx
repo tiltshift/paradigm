@@ -1,6 +1,4 @@
-import React from 'react'
-import { Button as NativeButton } from 'react-native'
-
+import { Button as TButton } from 'tamagui'
 export const Button = () => {
-  return <NativeButton title="button" />
+  return <TButton size="$">Button</TButton>
 }

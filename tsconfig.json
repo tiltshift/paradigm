@@ -1,19 +1,9 @@
 {
-  "extends": [
-    "expo/tsconfig.base",
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
+  "extends": ["expo/tsconfig.base", "../../tsconfig"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "baseUrl": ".",
     "noEmit": true,
-    "paths": {
-      "@/*": [
-        "apps/client/*"
-      ]
-    },
+
     // Type checking
     "strict": true,
     "noImplicitAny": true,
@@ -25,11 +15,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
 
     // JSX
     "jsx": "react-jsx"
-  },
-  "exclude": [
-    "node_modules",
-  ]
+  }
 }
