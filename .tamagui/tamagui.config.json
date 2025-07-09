@@ -34551,6 +34551,11 @@
         "pointer": "coarse"
       }
     },
+    "settings": {
+      "themeClassNameOnRoot": true,
+      "webContainerType": "inline-size",
+      "allowedStyleValues": "strict"
+    },
     "shouldAddPrefersColorThemes": true,
     "themeClassNameOnRoot": true,
     "shorthands": {},
@@ -221103,10 +221108,6 @@
       }
     },
     "unset": {},
-    "settings": {
-      "themeClassNameOnRoot": true,
-      "webContainerType": "inline-size"
-    },
     "inverseShorthands": {},
     "parsed": true,
     "getNewCSS": "Function",

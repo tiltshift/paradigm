@@ -6,6 +6,9 @@ import { animations } from './animations'
 import { Nuntito } from './fonts'
 
 export const tamaguiConfig = createTamagui({
+  settings: {
+    allowedStyleValues: 'strict'
+  },
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,

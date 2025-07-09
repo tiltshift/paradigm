@@ -45412,6 +45412,9 @@ var Nuntito = (0, import_core58.createFont)({
 
 // config/tamagui.config.ts
 var tamaguiConfig = createTamagui({
+  settings: {
+    allowedStyleValues: "strict"
+  },
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
