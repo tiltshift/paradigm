@@ -33,6 +33,7 @@ yarn-error.log*
 
 # tamagui
 **/.tamagui/*
+.tamagui
 
 # typescript
 *.tsbuildinfo
