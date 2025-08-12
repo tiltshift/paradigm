@@ -1,20 +1,19 @@
-
 import { themes, tokens } from '@tamagui/themes'
 import { createTamagui } from 'tamagui'
 
 import { animations } from './animations'
-import { Nuntito } from './fonts'
+import { Nuntito, NuntitoBold } from './fonts'
 
 export const tamaguiConfig = createTamagui({
   settings: {
-    allowedStyleValues: 'strict'
+    allowedStyleValues: 'strict',
   },
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
   shorthands: {},
   fonts: {
-    heading: Nuntito,
+    heading: NuntitoBold,
     body: Nuntito,
   },
   themes,
@@ -43,5 +42,5 @@ export type AppConfig = typeof tamaguiConfig
 
 declare module 'tamagui' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface TamaguiCustomConfig extends AppConfig { }
+  interface TamaguiCustomConfig extends AppConfig {}
 }
