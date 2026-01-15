@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      checks: write
+      issues: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
@@ -18,13 +20,15 @@ jobs:
       - uses: mongolyy/reviewdog-action-biome@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
+          reporter: github-pr-check
 
   typecheck:
     name: typecheck
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      checks: write
+      issues: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
@@ -32,4 +36,4 @@ jobs:
       - uses: EPMatt/reviewdog-action-tsc@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
+          reporter: github-pr-check
