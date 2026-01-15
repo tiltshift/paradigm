@@ -33,6 +33,18 @@ export default defineMain({
 					optimize: true,
 				}),
 			],
+			build: {
+				commonjsOptions: {
+					include: [/pluralize/, /node_modules/],
+					transformMixedEsModules: true,
+				},
+			},
+			optimizeDeps: {
+				include: ["pluralize"],
+				esbuildOptions: {
+					target: "esnext",
+				},
+			},
 		})
 	},
 })
