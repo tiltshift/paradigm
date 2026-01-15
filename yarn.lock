@@ -610,6 +610,8 @@ __metadata:
     patch-package: "npm:^8.0.1"
     playwright: "npm:^1.56.1"
     pluralize: "npm:^8.0.0"
+    react: "npm:^19.2.0"
+    react-dom: "npm:^19.2.0"
     react-native-device-info: "npm:^15.0.1"
     react-native-web: "npm:^0.21.2"
     rtl-detect: "npm:^1.1.2"
@@ -623,9 +625,6 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.0.5"
     web-vitals: "npm:^5.1.0"
-  peerDependencies:
-    react: ^19.2.0
-    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
@@ -8224,7 +8223,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react-dom@npm:^19.2.0":
   version: 19.2.3
   resolution: "react-dom@npm:19.2.3"
   dependencies:
@@ -8363,7 +8362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.2.0":
   version: 19.2.3
   resolution: "react@npm:19.2.3"
   checksum: 10/d16b7f35c0d35a56f63d9d1693819762e4abc479c57dd6310298920bed3820fcec7e17a99d44983416d8f5049143ea45b8005d3ab8324bae8973224400502b08
