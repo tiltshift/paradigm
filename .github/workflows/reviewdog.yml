@@ -8,25 +8,32 @@ jobs:
   biome:
     name: biome
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-node
 
-      - uses: ./.github/actions/setup-reviewdog
-
-      - name: Run biome with reviewdog
-        run: yarn lint --reporter=json | reviewdog -f=biome -reporter=github-pr-review -level=notice
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: mongolyy/reviewdog-action-biome@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
 
   typecheck:
     name: typecheck
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
-
-      - uses: ./.github/actions/setup-reviewdog
-
-      - name: Run typecheck with reviewdog
-        run: yarn typecheck 2>&1 | reviewdog -f=gcc -name=typecheck -reporter=github-pr-review -level=warning
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: ./.github/actions/setup-node
+      - uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
