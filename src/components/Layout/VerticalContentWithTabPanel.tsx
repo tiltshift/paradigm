@@ -1,7 +1,6 @@
 import {
 	Panel,
 	PanelGroup,
-	type PanelGroupHandle,
 	type PanelHandle,
 	type PanelProps,
 } from "@window-splitter/react"

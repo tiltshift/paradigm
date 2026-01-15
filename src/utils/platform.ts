@@ -8,7 +8,8 @@ import { browser } from "./browser"
 import { isRTL } from "./localization"
 
 const isServer = typeof window === "undefined"
-const isCypress = !isServer && ((window as any).Cypress as boolean)
+const isCypress =
+	!isServer && ((window as Window & { Cypress?: boolean }).Cypress as boolean)
 const isNative = ["ios", "android"].includes(NativePlatform.OS)
 const isWeb = NativePlatform.OS === "web"
 const isMobileBrowser = ["Android", "iOS"].includes(browser.os)
