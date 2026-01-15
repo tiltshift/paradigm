@@ -29,3 +29,7 @@ export * from "./utils/preventBounceScroll"
 // etc
 
 export { useTheme } from "tamagui"
+
+// Test errors for reviewdog
+const unusedVariable = "this will trigger a lint error"
+const typescriptError: number = "this is a string not a number"
