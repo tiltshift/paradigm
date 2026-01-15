@@ -1,5 +1,5 @@
-name: Setup Node and reviewdog
-description: Setup Node.js, install dependencies, and configure reviewdog
+name: Setup Node
+description: Setup Node.js, install dependencies
 
 runs:
   using: composite
@@ -17,8 +17,3 @@ runs:
     - name: Install dependencies
       run: yarn install --immutable
       shell: bash
-
-    - name: Setup reviewdog
-      uses: reviewdog/action-setup@v1
-      with:
-        reviewdog_version: latest
