@@ -1,0 +1,24 @@
+name: Setup Node and reviewdog
+description: Setup Node.js, install dependencies, and configure reviewdog
+
+runs:
+  using: composite
+  steps:
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .node-version
+        cache: yarn
+
+    - name: Install dependencies
+      run: yarn install --immutable
+      shell: bash
+
+    - name: Setup reviewdog
+      uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: latest
