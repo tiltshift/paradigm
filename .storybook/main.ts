@@ -1,29 +1,38 @@
-import { join, dirname } from "path"
+import { defineMain } from "@storybook/react-vite/node"
+import { tamaguiPlugin } from "@tamagui/vite-plugin"
+import viteTsConfigPaths from "vite-tsconfig-paths"
+export default defineMain({
+	framework: "@storybook/react-vite",
+	stories: [
+		"../src/**/*.mdx",
+		"../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		"../src/**/*.story.@(js|jsx|mjs|ts|tsx)",
+		"../src/**/stories.@(js|jsx|mjs|ts|tsx)",
+		"../src/**/story.@(js|jsx|mjs|ts|tsx)",
+	],
+	addons: [
+		"@chromatic-com/storybook",
+		"@storybook/addon-docs",
+		"@storybook/addon-a11y",
+		"@storybook/addon-vitest",
+	],
+	core: {
+		builder: "@storybook/builder-vite",
+	},
+	async viteFinal(config) {
+		const { mergeConfig } = await import("vite")
 
-import type { StorybookConfig } from '@storybook/react-native-web-vite';
-
-
-/**
-* This function is used to resolve the absolute path of a package.
-* It is needed in projects that use Yarn PnP or are set up within a monorepo.
-*/
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')))
-}
-const config: StorybookConfig = {
-  "stories": [
-    "../components/**/*.mdx",
-    "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-  ],
-  "addons": [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-onboarding'),
-    getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath("@storybook/experimental-addon-test")
-  ],
-  "framework": {
-    "name": getAbsolutePath('@storybook/react-native-web-vite'),
-    "options": {}
-  }
-};
-export default config;
+		return mergeConfig(config, {
+			plugins: [
+				viteTsConfigPaths({
+					projects: ["./tsconfig.json"],
+				}),
+				tamaguiPlugin({
+					config: "./src/config/tamagui.config.ts",
+					components: ["tamagui"],
+					optimize: true,
+				}),
+			],
+		})
+	},
+})
