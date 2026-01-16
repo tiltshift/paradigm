@@ -12,8 +12,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version-file: .node-version
-        cache: yarn
 
     - name: Install dependencies
-      run: yarn install --immutable
+      run: yarn install
       shell: bash
