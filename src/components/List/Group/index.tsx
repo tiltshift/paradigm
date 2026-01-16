@@ -41,7 +41,10 @@ export type ListGroupProps = ExternalListGroupProps & {
 	onLayout?: ScrollViewProps["onLayout"]
 }
 
-export const IsInListGroupContext = React.createContext(false)
+export const ListGroupContext = React.createContext({
+	groupId: undefined as string | undefined,
+	isInGroup: false,
+})
 
 export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
 	// isFullWidth = false,
@@ -51,30 +54,23 @@ export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
 	onLayout,
 	between,
 }) {
-	const [onlyOneChild, setOnlyOneChild] = React.useState(false)
-
+	const groupId = React.useId()
 	const isInScrollView = React.useContext(ScrollView.IsInContext)
-	const isInListGroup = React.useContext(IsInListGroupContext)
-
-	React.useEffect(() => {
-		setOnlyOneChild(React.Children.count(children) === 1)
-	}, [children])
-
-	// if we have more than one child wrap in a column with between set
+	const { isInGroup } = React.useContext(ListGroupContext)
 
 	const listGroupContent = (
-		<IsInListGroupContext value={true}>
-			{onlyOneChild ? (
-				children
-			) : (
-				<Column between={between || "$betweenLists"} pb={"$betweenLists"}>
-					{children}
-				</Column>
-			)}
-		</IsInListGroupContext>
+		<ListGroupContext value={{ groupId, isInGroup: true }}>
+			<Column
+				grow
+				py={"$listVerticalSpace"}
+				between={between || "$betweenLists"}
+			>
+				{children}
+			</Column>
+		</ListGroupContext>
 	)
 
-	if (!isInListGroup && !isInScrollView && !noScrollView) {
+	if (!isInGroup && !isInScrollView && !noScrollView) {
 		return (
 			<ScrollView
 				alwaysBounceVertical

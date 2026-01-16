@@ -5,7 +5,7 @@ import { Loading } from "../../Loading"
 import { ScrollView } from "../../ScrollView"
 import { Column } from "../../View"
 import { EmptyContent } from "../EmptyContent"
-import { IsInListGroupContext, ListGroup, type ListGroupProps } from "../Group"
+import { ListGroup, ListGroupContext, type ListGroupProps } from "../Group"
 import { Header } from "../Header"
 
 /**
@@ -72,14 +72,14 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 	...listGroupProps
 }) {
 	const isInScrollView = React.useContext(ScrollView.IsInContext)
-	const isInListGroup = React.useContext(IsInListGroupContext)
+	const { isInGroup } = React.useContext(ListGroupContext)
 
-	if (Object.keys(listGroupProps).length > 0 && isInListGroup)
+	if (Object.keys(listGroupProps).length > 0 && isInGroup)
 		return (
 			<ComponentError text="This list is already in a group so any `List.Group` props will be ignored" />
 		)
 
-	if (isInListGroup && isVirtual)
+	if (isInGroup && isVirtual)
 		return (
 			<ComponentError text="Virtual Lists can not be grouped (under `List.Group`)" />
 		)
@@ -89,7 +89,7 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 			<ComponentError text="Virtual Lists should not exist under a `ScrollView`" />
 		)
 
-	const wrapperContent = children
+	const wrapperContent = <Column>{children}</Column>
 
 	if (isLoading || isEmpty) {
 		return (
@@ -106,7 +106,7 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 		)
 	}
 
-	if (!isInScrollView && !isInListGroup)
+	if (!isInScrollView && !isInGroup)
 		return (
 			<ListGroup
 				color={color}

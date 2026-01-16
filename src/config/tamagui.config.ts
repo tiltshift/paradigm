@@ -34,6 +34,7 @@ export const baseTokens = {
 		true: 16,
 		betweenLists: betweenLists,
 		betweenButtons: 6,
+		listVerticalSpace: 12,
 		listItemEdgeInset: 6,
 		listItemBetweenItems: 4,
 		listItemStatusPosition: 6,

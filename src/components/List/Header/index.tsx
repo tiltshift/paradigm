@@ -19,7 +19,7 @@ export const Header = ({ children }: ListHeaderProps) => {
 		<Row
 			noShrink
 			center="v"
-			pt={"$betweenLists"}
+			height={"$listHeaderHeight"}
 			px={"$listItemEdgeInset"}
 			mx={"$edgeInset"}
 		>

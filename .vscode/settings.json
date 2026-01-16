@@ -23,6 +23,8 @@
 		".tamagui": true,
 		".yarn": true
 	},
+	"typescript.preferences.importModuleSpecifier": "relative",
+
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.patterns": {
 		"package.json": "package-lock.json, yarn.lock, .yarnrc.yml, cspell.config.yaml, biome.json, LICENSE, .gitignore",

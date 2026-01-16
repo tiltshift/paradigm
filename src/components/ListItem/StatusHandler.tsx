@@ -1,6 +1,8 @@
 import { AnimatePresence } from "motion/react"
+import React from "react"
 
 import { animations } from "../../config/animation.config"
+import { ListGroupContext } from "../List/Group"
 import { MotionView } from "../View"
 
 export type StatusHandlerProps = {
@@ -15,13 +17,14 @@ export const StatusHandler = ({
 	isActive,
 	isSelected,
 }: StatusHandlerProps) => {
+	const { groupId } = React.useContext(ListGroupContext)
 	return (
 		<>
 			<AnimatePresence>
 				{isHovered && (
 					<MotionView
 						fillContainer
-						layoutId="hovered"
+						layoutId={`hovered-${groupId}`}
 						color={"$normalHover"}
 						style={{ opacity: 0.5 }}
 						initial={{ opacity: 0 }}

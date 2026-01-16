@@ -1,7 +1,11 @@
+import { ScrollView as TGScrollView } from "tamagui"
+
 import preview from "@/storybook/preview"
+import { ListItem } from "../../ListItem"
 import { ScrollView } from "../../ScrollView"
 import { Text } from "../../Text"
 import { Column, Row } from "../../View"
+import { List } from "../"
 import { SimpleList } from "."
 
 const meta = preview.meta({
@@ -65,10 +69,11 @@ export const BeforeAfter = meta.story({
 
 export const Alone = meta.story({
 	args: {
+		color: "red",
 		children: (
 			<Column grow color="pink">
 				<Text fit={Text.fitValues.wrap}>
-					This list will grow to fill contents
+					This list will grow to fill contents (dark red)
 				</Text>
 			</Column>
 		),
@@ -77,10 +82,11 @@ export const Alone = meta.story({
 
 export const InScrollView = meta.story({
 	args: {
+		color: "red",
 		children: (
 			<Column grow color="pink">
 				<Text fit={Text.fitValues.wrap}>
-					This list does not grow to fill contents
+					This list does not grow to fill contents (dark red)
 				</Text>
 			</Column>
 		),
@@ -90,6 +96,47 @@ export const InScrollView = meta.story({
 			<ScrollView color="cyan">
 				<SimpleList {...args} />
 			</ScrollView>
+		)
+	},
+})
+
+export const WithItems = meta.story({
+	render: (args) => {
+		return (
+			<Row grow between={5} m={5}>
+				<Column width={280} borderWidth={1} borderColor={"$uiStroke"}>
+					<SimpleList {...args}>
+						<ListItem label="Item 1" />
+						<ListItem label="Item 2" />
+						<ListItem label="Item 3" />
+						<ListItem label="Item 4" />
+					</SimpleList>
+				</Column>
+				<Column width={280} borderWidth={1} borderColor={"$uiStroke"}>
+					<List.Group>
+						<List.Simple {...args}>
+							<ListItem label="Item 1" />
+							<ListItem label="Item 2" />
+						</List.Simple>
+						<List.Simple {...args}>
+							<ListItem label="Item 1" />
+							<ListItem label="Item 2" />
+						</List.Simple>
+					</List.Group>
+				</Column>
+				<Column width={280} borderWidth={1} borderColor={"$uiStroke"}>
+					<List.Group>
+						<List.Simple {...args} header="List 1">
+							<ListItem label="Item 1" />
+							<ListItem label="Item 2" />
+						</List.Simple>
+						<List.Simple {...args} header="List 2">
+							<ListItem label="Item 1" />
+							<ListItem label="Item 2" />
+						</List.Simple>
+					</List.Group>
+				</Column>
+			</Row>
 		)
 	},
 })

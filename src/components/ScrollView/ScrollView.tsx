@@ -10,11 +10,12 @@ export type ScrollViewRef = TGScrollView
 export const ScrollView = ({ color, ...props }: TGScrollViewProps) => {
 	const { onLayout, contentContainerStyle } = useAlwaysBounceVertical()
 
+	const sharedProps = { ...props, backgroundColor: color }
+
 	if (props.alwaysBounceVertical) {
 		return (
 			<TGScrollView
-				{...props}
-				backgroundColor={color}
+				{...sharedProps}
 				onLayout={(event) => {
 					props.onLayout?.(event)
 					onLayout(event)
@@ -31,6 +32,6 @@ export const ScrollView = ({ color, ...props }: TGScrollViewProps) => {
 			/>
 		)
 	} else {
-		return <TGScrollView {...props} />
+		return <TGScrollView {...sharedProps} />
 	}
 }
