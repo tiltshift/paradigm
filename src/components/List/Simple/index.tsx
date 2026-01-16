@@ -30,10 +30,13 @@ export const SimpleList = React.memo<SimpleListProps>(function SimpleList({
 			{...props}
 			isEmpty={isEmpty}
 		>
-			{beforeList}
-			{header && <Header>{header}</Header>}
-			{children}
-			{afterList}
+			{/** biome-ignore lint/complexity/noUselessFragments: We want this content to appear as a single element for the wrapper/group. Without the fragment this will look like 4 children */}
+			<>
+				{beforeList}
+				{header && <Header>{header}</Header>}
+				{children}
+				{afterList}
+			</>
 		</ListWrapper>
 	)
 })

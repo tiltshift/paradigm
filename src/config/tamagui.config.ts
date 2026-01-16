@@ -5,6 +5,8 @@ import { Nuntito } from "./fonts"
 import { defaultParadigmConfig } from "./paradigm.config"
 import { shorthands } from "./shorthands"
 
+const betweenLists = 16
+
 export const baseTokens = {
 	color: {},
 	size: {
@@ -14,8 +16,9 @@ export const baseTokens = {
 		tabHeight: 40,
 		tabContentMinHeight: 40,
 		tabContentDefaultSize: 280,
-		listHeaderHeight: 45,
+		listHeaderHeight: 24,
 		listHeaderHeightSticky: 32,
+		listSpacerHeight: betweenLists,
 		listItemStatusSize: 4,
 		listItemAfterIconSize: 18,
 		listItemFirstLineIconSize: 14,
@@ -29,7 +32,7 @@ export const baseTokens = {
 		thinStroke: 1,
 		space: 16,
 		true: 16,
-		betweenLists: 16,
+		betweenLists: betweenLists,
 		betweenButtons: 6,
 		listItemEdgeInset: 6,
 		listItemBetweenItems: 4,

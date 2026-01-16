@@ -7,13 +7,14 @@ import { useAlwaysBounceVertical } from "../../hooks/useAlwaysBounceVertical"
 
 export type ScrollViewRef = TGScrollView
 
-export const ScrollView = (props: TGScrollViewProps) => {
+export const ScrollView = ({ color, ...props }: TGScrollViewProps) => {
 	const { onLayout, contentContainerStyle } = useAlwaysBounceVertical()
 
 	if (props.alwaysBounceVertical) {
 		return (
 			<TGScrollView
 				{...props}
+				backgroundColor={color}
 				onLayout={(event) => {
 					props.onLayout?.(event)
 					onLayout(event)

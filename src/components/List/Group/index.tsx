@@ -10,10 +10,11 @@ import type { ScrollViewProps } from "react-native"
  */
 export type ExternalListGroupProps = {
 	/**
+	 * TODO Reimplement this
 	 * By default list contents are limited by the narrow/wide media breakpoint.
 	 * Set this to `true` to override this behavior.
 	 */
-	isFullWidth?: boolean
+	// isFullWidth?: boolean
 	/**
 	 * the background color for the group
 	 */
@@ -43,7 +44,7 @@ export type ListGroupProps = ExternalListGroupProps & {
 export const IsInListGroupContext = React.createContext(false)
 
 export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
-	isFullWidth = false,
+	// isFullWidth = false,
 	noScrollView = false,
 	children,
 	color,
@@ -58,6 +59,8 @@ export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
 	React.useEffect(() => {
 		setOnlyOneChild(React.Children.count(children) === 1)
 	}, [children])
+
+	console.log("children count", React.Children.count(children))
 
 	// if we have more than one child wrap in a column with between set
 
@@ -80,8 +83,9 @@ export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
 				keyboardDismissMode="interactive"
 				keyboardShouldPersistTaps="handled"
 				onLayout={onLayout}
-				{...(isFullWidth && { flexGrow: 1 })}
+				// {...(isFullWidth && { flexGrow: 1 })}
 				color={color}
+				contentContainerStyle={{ flexGrow: 1 }}
 			>
 				{listGroupContent}
 			</ScrollView>

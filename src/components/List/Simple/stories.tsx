@@ -1,7 +1,7 @@
 import preview from "@/storybook/preview"
 import { ScrollView } from "../../ScrollView"
 import { Text } from "../../Text"
-import { Column } from "../../View"
+import { Column, Row } from "../../View"
 import { SimpleList } from "."
 
 const meta = preview.meta({
@@ -9,11 +9,30 @@ const meta = preview.meta({
 })
 
 export const Empty = meta.story()
+
 export const EmptyWithContent = meta.story({
 	args: {
-		emptyContent: "I'm So Empty!",
+		emptyContent: "I'm so Empty!",
+		color: "blue",
 	},
 })
+
+export const EmptyInContext = meta.story({
+	args: {
+		emptyContent: "I'm so Empty!",
+		color: "blue",
+	},
+	render: (args) => {
+		return (
+			<Column color="red" grow>
+				<Row height={100} width={100} color="green" />
+				<SimpleList {...args} />
+				<Row height={100} width={100} color="green" />
+			</Column>
+		)
+	},
+})
+
 export const EmptyWithBeforeAfter = meta.story({
 	args: {
 		emptyContent: "I'm So Empty!",

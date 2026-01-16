@@ -24,16 +24,10 @@ export type ExternalWrapperProps = {
 		| undefined
 	/**
 	 * Anything you want to render before the list (within its scrollview) goes here.
-	 *
-	 * Note this is only rendered by the wrapper when the list is empty or loading.
-	 * Otherwise the list itself should handle it
 	 */
 	beforeList?: React.ReactElement | undefined
 	/**
 	 * Anything you want to render after the list (within its scrollview) goes here.
-	 *
-	 * Note this is only rendered by the wrapper when the list is empty or loading.
-	 * Otherwise the list itself should handle it
 	 */
 	afterList?: React.ReactElement | undefined
 	/**
@@ -74,6 +68,7 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 	beforeList,
 	afterList,
 	header,
+	color,
 	...listGroupProps
 }) {
 	const isInScrollView = React.useContext(ScrollView.IsInContext)
@@ -94,22 +89,27 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 			<ComponentError text="Virtual Lists should not exist under a `ScrollView`" />
 		)
 
-	let wrapperContent = <Column>{children}</Column>
+	const wrapperContent = children
 
 	if (isLoading || isEmpty) {
-		wrapperContent = (
-			<Column>
+		return (
+			<>
 				{beforeList}
 				{header && <Header>{header}</Header>}
-				{isLoading ? <Loading /> : <EmptyContent>{emptyContent}</EmptyContent>}
+				{isLoading ? (
+					<Loading />
+				) : (
+					<EmptyContent color={color}>{emptyContent}</EmptyContent>
+				)}
 				{afterList}
-			</Column>
+			</>
 		)
 	}
 
 	if (!isInScrollView && !isInListGroup)
 		return (
 			<ListGroup
+				color={color}
 				{...listGroupProps}
 				noScrollView={isVirtual && !isEmpty && !isLoading}
 			>
