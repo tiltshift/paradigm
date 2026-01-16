@@ -60,8 +60,6 @@ export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
 		setOnlyOneChild(React.Children.count(children) === 1)
 	}, [children])
 
-	console.log("children count", React.Children.count(children))
-
 	// if we have more than one child wrap in a column with between set
 
 	const listGroupContent = (
