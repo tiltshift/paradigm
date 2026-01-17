@@ -30,7 +30,7 @@ export const StatusHandler = ({
 						initial={{ opacity: 0 }}
 						exit={{ opacity: 0 }}
 						animate={{ opacity: 0.5 }}
-						transition={animations.slideSpring}
+						transition={animations.quickSpring}
 						radius={"$md"}
 						layoutDependency={isHovered}
 					/>
@@ -44,7 +44,7 @@ export const StatusHandler = ({
 					initial={{ opacity: 0 }}
 					exit={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={animations.slideSpring}
+					transition={animations.quickSpring}
 					color={"$listItemActive"}
 					radius={"$md"}
 				/>
@@ -53,9 +53,9 @@ export const StatusHandler = ({
 			{isSelected && (
 				<MotionView
 					fillContainer
-					layoutId="selected"
+					layoutId={`selected-${groupId}`}
 					// style={{ opacity: 0.25 }}
-					transition={animations.slideSpring}
+					transition={animations.quickSpring}
 					color={"$listItemSelected"}
 					radius={"$md"}
 					layoutDependency={isSelected}
