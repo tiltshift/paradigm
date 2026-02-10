@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-// Generated on 2026-01-15T06:27:20.742Z
+// Generated on 2026-02-10T20:09:58.948Z
 
 export const shadowStyles = {
 	hole1: [

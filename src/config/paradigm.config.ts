@@ -29,6 +29,7 @@ export type Theme = {
 	primaryActive: string
 	listItemActive: string
 	listItemSelected: string
+	settingsListHeader: string
 }
 
 type ParadigmConfigType = {
@@ -129,6 +130,7 @@ export const defaultParadigmConfig = {
 			primaryActive: blue[700],
 			listItemActive: blue[100],
 			listItemSelected: gray[100],
+			settingsListHeader: gray[700],
 		} as const,
 		dark: {
 			primary: blue[500],
@@ -153,6 +155,7 @@ export const defaultParadigmConfig = {
 			primaryActive: blue[700],
 			listItemActive: blue[100],
 			listItemSelected: gray[200],
+			settingsListHeader: gray[700],
 		} as const,
 	} as const,
 } as const satisfies ParadigmConfigType

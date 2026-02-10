@@ -39,6 +39,8 @@ export const baseTokens = {
 		listItemBetweenItems: 4,
 		listItemStatusPosition: 6,
 		listItemTextIconSpace: 6,
+		settingsListHeaderPadding: 6,
+		captionVerticalMargin: 6,
 	},
 	radius: {
 		sm: 2,
