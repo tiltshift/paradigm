@@ -6,14 +6,13 @@ import { useShadow as getShadow } from "../../hooks/useShadow"
 import { ComponentError } from "../ComponentError"
 import { Icon, type IconComponentType } from "../Icon"
 import { Text } from "../Text"
-import { MotionView, type Row, ViewContext } from "../View"
+import { MotionView, ViewContext } from "../View"
 
 import type { FontKey } from "../../config/fonts"
+import type { ColorValue } from "../../utils/color"
 import type { OnPressWithRef } from "../../utils/types"
 import type { WebIconComponentProps } from "../Icon/types"
 
-type RowColorType = React.ComponentProps<typeof Row>["color"]
-type TextColorType = React.ComponentProps<typeof Text>["color"]
 type ParadigmButtonProps<
 	IconType extends IconComponentType = IconComponentType,
 > = {
@@ -114,17 +113,10 @@ export const Button = ({
 	let buttonHeight: number
 	let textStyle: FontKey
 	let disclosureSize: number
-	let backgroundColor: RowColorType
-	let textColor: TextColorType
-	let iconColor: string
-	let disclosureColor: string
-
-	const resolveColor = (value: unknown): string => {
-		if (typeof value === "string") return value
-		const maybe = value as { get?: () => unknown }
-		if (maybe?.get) return String(maybe.get())
-		return String(value)
-	}
+	let backgroundColor: ColorValue
+	let textColor: ColorValue
+	let iconColor: ColorValue
+	let disclosureColor: ColorValue
 
 	/**
 	 * Button Sizing!
@@ -223,17 +215,15 @@ export const Button = ({
 	switch (buttonState) {
 		case "loading":
 		case "disabled": {
-			iconColor = disclosureColor = resolveColor(theme.colorDisabled)
+			iconColor = disclosureColor = theme.colorDisabled
 			break
 		}
 		default: {
-			iconColor = disclosureColor = resolveColor(
-				isPrimary
-					? theme.colorOnPrimary
-					: isNegative
-						? theme.destructive
-						: theme.primary,
-			)
+			iconColor = disclosureColor = isPrimary
+				? theme.colorOnPrimary
+				: isNegative
+					? theme.destructive
+					: theme.primary
 		}
 	}
 

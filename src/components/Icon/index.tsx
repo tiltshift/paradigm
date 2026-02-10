@@ -5,7 +5,7 @@
 import DragHandle from "./crafted/DragHandle"
 import { Icon as IconGenerated } from "./generated"
 
-import type { WebIconComponentType } from "./types"
+import type { WebIconComponentProps, WebIconComponentType } from "./types"
 
 /**
  * Add crafted icons to generated icons before exporting
@@ -24,3 +24,4 @@ export { Icon }
  * we don't want components to throw in this case.
  */
 export type IconComponentType = WebIconComponentType
+export type IconComponentProps = WebIconComponentProps

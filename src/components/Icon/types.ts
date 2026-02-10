@@ -1,8 +1,8 @@
 import type { SVGProps } from "react"
-
+import type { ColorValue } from "../../utils/color"
 export type WebIconComponentProps = {
 	size: number
-	color?: string
+	color?: ColorValue
 	style?: Omit<
 		SVGProps<SVGSVGElement>["style"],
 		"backgroundColor" | "width" | "height"

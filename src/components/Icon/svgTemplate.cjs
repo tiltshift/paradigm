@@ -10,6 +10,7 @@ import React from "react"
 import { useTheme } from "@tamagui/core"
 
 import { TextContext } from "../../Text"
+import { resolveColor } from "../utils"
 
 import type { SVGProps } from "react"
 import type { ViewProps } from "react-native"
@@ -24,7 +25,9 @@ const ${componentName}: WebIconComponentType	 = ({ size, color, style = {}, ...o
   const theme = useTheme()
   const { isInText } = React.useContext(TextContext)
 
-  const fill = color || (isInText ? theme.iconInTextColor.get() : 'black')
+  const fill =
+    (color && resolveColor(color)) ||
+    (isInText ? theme.iconInTextColor.get() : "black")
 
   const combinedStyle = {
     flexShrink: 0,
