@@ -2,9 +2,7 @@ import React from "react"
 import { ActivityIndicator } from "react-native-web"
 import { getToken, useTheme, type ViewProps } from "tamagui"
 
-import { ComponentError } from "../ComponentError"
 import { Icon } from "../Icon"
-import { IsInSettingsListContext } from "../SettingsList/context"
 import { Spacer } from "../Spacer"
 import { Row, View } from "../View"
 import { StatusHandler, type StatusHandlerProps } from "./StatusHandler"
@@ -81,7 +79,6 @@ export const BaseListItem = ({
 	...otherProps
 }: BaseListItemProps & { children: React.ReactNode }) => {
 	const theme = useTheme()
-	const isInSettings = React.useContext(IsInSettingsListContext)
 	const isBeingDraggedOver = false // TODO Add drag and drop support
 
 	const [active, setActive] = React.useState(isActive || isBeingDraggedOver)
@@ -90,11 +87,6 @@ export const BaseListItem = ({
 		setActive(isActive || isBeingDraggedOver)
 	}, [isActive])
 
-	// No nos.
-	if (isInSettings && !isSettingsItem)
-		return <ComponentError text="ListItem can't be used in a SettingsList" />
-
-	// Yes yeses.
 	const StatusHandlerComponent = statusHandlerComponent
 
 	return (
