@@ -7,13 +7,14 @@ const meta = preview.meta({
 	component: Icon,
 	args: {
 		color: "red",
+		size: "24",
 	},
 })
 export const Generated = meta.story({
 	render: (args) => (
 		<Row canWrap>
 			{Object.entries(rawIcons).map(([name, IconComponent]) => (
-				<IconComponent color={args.color} size={24} key={name} />
+				<IconComponent color={args.color} size={args.size} key={name} />
 			))}
 		</Row>
 	),

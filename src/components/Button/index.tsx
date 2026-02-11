@@ -1,3 +1,4 @@
+import { getTokens } from "@tamagui/core"
 import React from "react"
 import { useTheme, type ViewStyle } from "tamagui"
 
@@ -11,19 +12,16 @@ import { MotionView, ViewContext } from "../View"
 import type { FontKey } from "../../config/fonts"
 import type { ColorValue } from "../../utils/color"
 import type { OnPressWithRef } from "../../utils/types"
-import type { WebIconComponentProps } from "../Icon/types"
 
-type ParadigmButtonProps<
-	IconType extends IconComponentType = IconComponentType,
-> = {
+type ParadigmButtonProps = {
 	/**
 	 * The Icon for this button
 	 */
-	icon?: IconType
+	icon?: IconComponentType
 	/**
 	 * Props to pass to the icon component
 	 */
-	iconProps?: React.ComponentProps<IconType>
+	iconProps?: React.ComponentProps<IconComponentType>
 	/**
 	 * the text to show on the button, if any
 	 */
@@ -109,10 +107,10 @@ export const Button = ({
 	 */
 	let outerPadding: number
 	let innerPadding: number
-	let iconSize: number
+	let iconSize = getTokens().icon[20]
 	let buttonHeight: number
 	let textStyle: FontKey
-	let disclosureSize: number
+	let disclosureSize = getTokens().icon[18]
 	let backgroundColor: ColorValue
 	let textColor: ColorValue
 	let iconColor: ColorValue
@@ -126,8 +124,8 @@ export const Button = ({
 			buttonHeight = 36
 			outerPadding = 8
 			innerPadding = 4
-			iconSize = 20
-			disclosureSize = 18
+			iconSize = getTokens().icon[20]
+			disclosureSize = getTokens().icon[18]
 			textStyle = Text.style.header6
 
 			break
@@ -136,8 +134,8 @@ export const Button = ({
 			buttonHeight = 28
 			outerPadding = 6
 			innerPadding = 4
-			iconSize = 18
-			disclosureSize = 16
+			iconSize = getTokens().icon[18]
+			disclosureSize = getTokens().icon[16]
 			textStyle = Text.style.footnote
 
 			break
@@ -251,11 +249,6 @@ export const Button = ({
 		}
 	}
 
-	const iconComponentProps: WebIconComponentProps = {
-		size: iconSize,
-		color: iconColor,
-	}
-
 	return (
 		<MotionView
 			ref={buttonRef}
@@ -292,7 +285,7 @@ export const Button = ({
 			}}
 		>
 			{IconComponent && (
-				<IconComponent {...iconComponentProps} {...iconProps} />
+				<IconComponent size={iconSize} color={iconColor} {...iconProps} />
 			)}
 			{label && (
 				<Text

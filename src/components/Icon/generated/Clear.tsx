@@ -1,11 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
-import { resolveColor } from "../utils"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const ClearIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -23,17 +22,14 @@ const ClearIcon = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 )
-const Clear: WebIconComponentType = ({
+const Clear = ({
 	size,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill =
-		(color && resolveColor(color)) ||
-		(isInText ? theme.iconInTextColor.get() : "black")
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -46,4 +42,14 @@ const Clear: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Clear
+const StyledIcon = styled(
+	Clear,
+	{},
+	{
+		accept: {
+			color: "color",
+			size: "icon",
+		} as const,
+	},
+)
+export default StyledIcon

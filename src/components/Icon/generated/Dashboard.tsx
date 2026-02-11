@@ -1,11 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
-import { resolveColor } from "../utils"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const DashboardIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -23,17 +22,14 @@ const DashboardIcon = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 )
-const Dashboard: WebIconComponentType = ({
+const Dashboard = ({
 	size,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill =
-		(color && resolveColor(color)) ||
-		(isInText ? theme.iconInTextColor.get() : "black")
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -46,4 +42,14 @@ const Dashboard: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Dashboard
+const StyledIcon = styled(
+	Dashboard,
+	{},
+	{
+		accept: {
+			color: "color",
+			size: "icon",
+		} as const,
+	},
+)
+export default StyledIcon

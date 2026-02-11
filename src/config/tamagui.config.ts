@@ -1,4 +1,5 @@
 import { defaultConfig as defaultTamaguiConfig } from "@tamagui/config/v4"
+import { px } from "@tamagui/core"
 import { type CreateTamaguiProps, createTamagui, createTokens } from "tamagui"
 
 import { Nuntito } from "./fonts"
@@ -9,6 +10,17 @@ const betweenLists = 16
 
 export const baseTokens = {
 	color: {},
+	icon: {
+		16: px(16),
+		18: px(18),
+		20: px(20),
+		22: px(22),
+		28: px(28),
+		32: px(32),
+		42: px(42),
+		64: px(64),
+	},
+
 	size: {
 		...defaultParadigmConfig.size,
 		true: 16,
@@ -21,8 +33,9 @@ export const baseTokens = {
 		listSpacerHeight: betweenLists,
 		listItemStatusSize: 4,
 		listItemAfterIconSize: 18,
-		listItemFirstLineIconSize: 14,
-		listItemInteriorIconSize: 16,
+		listItemFirstLineIconSize: 14, // matches the size of the first line of text in a 2-line list item
+		listItemInteriorIconSize: 16, // matches the size of the text in a 1-line list item
+		listItemIconSize: 28,
 		listItemHeight: 32,
 		mainNavMinWidth: 280,
 		mainNavMaxWidth: 560,

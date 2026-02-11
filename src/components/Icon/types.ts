@@ -1,5 +1,18 @@
 import type { SVGProps } from "react"
 import type { ColorValue } from "../../utils/color"
+
+/**
+ * Types before we add tamagui to the icon
+ */
+export type RawWebIconComponentProps = {
+	size: number
+	color?: string
+	style?: Omit<
+		SVGProps<SVGSVGElement>["style"],
+		"backgroundColor" | "width" | "height"
+	>
+}
+
 export type WebIconComponentProps = {
 	size: number
 	color?: ColorValue
@@ -8,5 +21,3 @@ export type WebIconComponentProps = {
 		"backgroundColor" | "width" | "height"
 	>
 }
-
-export type WebIconComponentType = React.FC<WebIconComponentProps> // & SvgProps

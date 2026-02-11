@@ -207,9 +207,7 @@ async function generateTypeScriptFile(
 		.map(({ name }) => `import ${name} from "./${name}"`)
 		.join("\n")
 
-	const exports = sortedIcons
-		.map(({ name }) => `\t${name}: ${name} as WebIconComponentType,`)
-		.join("\n")
+	const exports = sortedIcons.map(({ name }) => `\t${name},`).join("\n")
 
 	const attachments = sortedIcons
 		.map(({ name }) => `Icon.${name} = rawIcons.${name}`)
@@ -220,8 +218,6 @@ async function generateTypeScriptFile(
 import { ComponentError } from "../../ComponentError"
 // Generated Icons:
 ${imports}
-
-import type { WebIconComponentType } from "../types"
 
 export const rawIcons = {
 ${exports}

@@ -7,27 +7,25 @@ module.exports = function template(
 
 	return tpl`
 import React from "react"
-import { useTheme } from "@tamagui/core"
+import { styled } from "@tamagui/core"
 
 import { TextContext } from "../../Text"
-import { resolveColor } from "../utils"
 
 import type { SVGProps } from "react"
 import type { ViewProps } from "react-native"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 ${imports}
 ${interfaces}
 
 const ${iconName} = (${props}) => ${jsx}
 
-const ${componentName}: WebIconComponentType	 = ({ size, color, style = {}, ...otherProps }) => {
-  const theme = useTheme()
+const ${componentName}	 = ({ size, color, style = {}, ...otherProps }: RawWebIconComponentProps) => {
   const { isInText } = React.useContext(TextContext)
 
   const fill =
-    (color && resolveColor(color)) ||
-    (isInText ? theme.iconInTextColor.get() : "black")
+    color ||
+    (isInText ? "$iconInTextColor" : "black")
 
   const combinedStyle = {
     flexShrink: 0,
@@ -37,6 +35,17 @@ const ${componentName}: WebIconComponentType	 = ({ size, color, style = {}, ...o
   return React.createElement(${iconName}, { ...otherProps, style: combinedStyle, width: size, height: size, fill })
 }
 
-export default ${componentName}
+const StyledIcon = styled(
+	${componentName},
+	{},
+	{
+		accept: {
+			color: "color",
+      size: "icon",
+		} as const,
+	},
+)
+
+export default StyledIcon
   `
 }
