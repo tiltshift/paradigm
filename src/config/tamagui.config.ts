@@ -11,6 +11,7 @@ const betweenLists = 16
 export const baseTokens = {
 	color: {},
 	icon: {
+		10: px(100),
 		16: px(16),
 		18: px(18),
 		20: px(20),
@@ -72,6 +73,8 @@ export const baseTokens = {
 		5: 500,
 	},
 } as const
+
+export type IconSizes = keyof typeof baseTokens.icon
 
 /**
  * This is the config used in paradigm by default.

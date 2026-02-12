@@ -7,7 +7,7 @@ module.exports = function template(
 
 	return tpl`
 import React from "react"
-import { styled } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 
 import { TextContext } from "../../Text"
 
@@ -20,8 +20,10 @@ ${interfaces}
 
 const ${iconName} = (${props}) => ${jsx}
 
-const ${componentName}	 = ({ size, color, style = {}, ...otherProps }: RawWebIconComponentProps) => {
+const ${componentName}	 = ({ size: sizeKey, color, style = {}, ...otherProps }: RawWebIconComponentProps) => {
   const { isInText } = React.useContext(TextContext)
+
+  const size = getTokenValue(\`$icon.\${sizeKey}\`)
 
   const fill =
     color ||
@@ -41,10 +43,10 @@ const StyledIcon = styled(
 	{
 		accept: {
 			color: "color",
-      size: "icon",
 		} as const,
 	},
 )
+
 
 export default StyledIcon
   `

@@ -7,7 +7,7 @@ const meta = preview.meta({
 	component: Icon,
 	args: {
 		color: "red",
-		size: "24",
+		size: "28",
 	},
 })
 export const Generated = meta.story({

@@ -10,6 +10,7 @@ import { Text } from "../Text"
 import { MotionView, ViewContext } from "../View"
 
 import type { FontKey } from "../../config/fonts"
+import type { IconSizes } from "../../config/tamagui.config"
 import type { ColorValue } from "../../utils/color"
 import type { OnPressWithRef } from "../../utils/types"
 
@@ -107,10 +108,10 @@ export const Button = ({
 	 */
 	let outerPadding: number
 	let innerPadding: number
-	let iconSize = getTokens().icon[20]
+	let iconSize: IconSizes
 	let buttonHeight: number
 	let textStyle: FontKey
-	let disclosureSize = getTokens().icon[18]
+	let disclosureSize: IconSizes
 	let backgroundColor: ColorValue
 	let textColor: ColorValue
 	let iconColor: ColorValue
@@ -124,8 +125,8 @@ export const Button = ({
 			buttonHeight = 36
 			outerPadding = 8
 			innerPadding = 4
-			iconSize = getTokens().icon[20]
-			disclosureSize = getTokens().icon[18]
+			iconSize = 20
+			disclosureSize = 18
 			textStyle = Text.style.header6
 
 			break
@@ -134,8 +135,8 @@ export const Button = ({
 			buttonHeight = 28
 			outerPadding = 6
 			innerPadding = 4
-			iconSize = getTokens().icon[18]
-			disclosureSize = getTokens().icon[16]
+			iconSize = 18
+			disclosureSize = 16
 			textStyle = Text.style.footnote
 
 			break

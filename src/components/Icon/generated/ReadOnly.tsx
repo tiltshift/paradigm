@@ -1,4 +1,4 @@
-import { styled } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
@@ -30,12 +30,13 @@ const ReadOnlyIcon = (props: SVGProps<SVGSVGElement>) => (
 	</svg>
 )
 const ReadOnly = ({
-	size,
+	size: sizeKey,
 	color,
 	style = {},
 	...otherProps
 }: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
+	const size = getTokenValue(`$icon.${sizeKey}`)
 	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
@@ -55,7 +56,6 @@ const StyledIcon = styled(
 	{
 		accept: {
 			color: "color",
-			size: "icon",
 		} as const,
 	},
 )
