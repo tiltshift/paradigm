@@ -1,4 +1,4 @@
-import { getTokens } from "@tamagui/core"
+import { getTokenValue } from "@tamagui/core"
 
 import { Text } from "../Text"
 import { Row } from "../View"
@@ -28,7 +28,7 @@ export const BaseSettingsListItem = ({
 			{Icon && (
 				<Icon
 					color={iconColor || "$color"}
-					size={getTokens().size.listItemIconSize.val}
+					size={getTokenValue("$size.listItemIconSize")}
 				/>
 			)}
 			<Text noUserSelect noLineHeight>

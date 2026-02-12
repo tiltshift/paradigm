@@ -2,7 +2,7 @@ import { type Color, converter, formatRgb } from "culori"
 
 import type { ViewProps as TamaguiViewProps } from "tamagui"
 
-export type ColorValue = Exclude<TamaguiViewProps["backgroundColor"], undefined>
+export type ColorValue = TamaguiViewProps["backgroundColor"]
 
 const rgbConverter = converter("rgb")
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { ActivityIndicator } from "react-native-web"
-import { getToken, useTheme, type ViewProps } from "tamagui"
+import { getToken, type ViewProps } from "tamagui"
 
 import { Icon } from "../Icon"
 import { Spacer } from "../Spacer"
@@ -78,7 +78,6 @@ export const BaseListItem = ({
 	statusHandlerComponent = StatusHandler,
 	...otherProps
 }: BaseListItemProps & { children: React.ReactNode }) => {
-	const theme = useTheme()
 	const isBeingDraggedOver = false // TODO Add drag and drop support
 
 	const [active, setActive] = React.useState(isActive || isBeingDraggedOver)
@@ -121,7 +120,7 @@ export const BaseListItem = ({
 								<Spacer size={"$space.listItemBetweenItems"} />
 								<Icon.Check
 									size={getToken("$listItemAfterIconSize")}
-									color={theme.primary.get()}
+									color={"$primary"}
 								/>
 							</>
 						)}

@@ -1,4 +1,3 @@
-import { getTokens } from "@tamagui/core"
 import React from "react"
 import { useTheme, type ViewStyle } from "tamagui"
 

@@ -8,20 +8,22 @@ import { shorthands } from "./shorthands"
 
 const betweenLists = 16
 
+const icon = {
+	10: 10,
+	14: 14,
+	16: 16,
+	18: 18,
+	20: 20,
+	22: 22,
+	28: 28,
+	32: 32,
+	42: 42,
+	64: 64,
+} as const
+
 export const baseTokens = {
 	color: {},
-	icon: {
-		10: px(100),
-		16: px(16),
-		18: px(18),
-		20: px(20),
-		22: px(22),
-		28: px(28),
-		32: px(32),
-		42: px(42),
-		64: px(64),
-	},
-
+	icon,
 	size: {
 		...defaultParadigmConfig.size,
 		true: 16,
@@ -74,7 +76,7 @@ export const baseTokens = {
 	},
 } as const
 
-export type IconSizes = keyof typeof baseTokens.icon
+export type IconSizes = keyof typeof icon
 
 /**
  * This is the config used in paradigm by default.

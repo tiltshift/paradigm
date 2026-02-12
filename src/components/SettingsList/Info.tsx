@@ -1,5 +1,4 @@
 import { Icon } from "../Icon"
-import { useListItem } from "../ListItem"
 import { Text } from "../Text"
 import {
 	BaseSettingsListItem,

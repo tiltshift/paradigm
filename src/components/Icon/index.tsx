@@ -16,5 +16,6 @@ Icon.DragHandle = DragHandle
 
 export { Icon }
 
-export type IconComponentType = typeof Icon.Apple
 export type IconComponentProps = React.ComponentProps<typeof Icon.Apple>
+
+export type IconComponentType = (props: IconComponentProps) => React.ReactNode
