@@ -1,3 +1,5 @@
+import { getTokenValue } from "tamagui"
+
 import { Icon } from "../Icon"
 import { Text } from "../Text"
 import {
@@ -12,17 +14,16 @@ export type InfoProps = BaseSettingsListItemProps & {
 	 * if the value is a Text component (or a text-like component like DateTime) set this to true to get the correct formatting
 	 */
 	valueIsText?: boolean
+	onPress?: () => void
 }
 
 export const Info = ({
-	label,
 	value,
+	valueIsText,
 	noSelectValue = false,
-	valueIsText = false,
-	...props
+	onPress,
+	...baseProps
 }: InfoProps) => {
-	const { value, ...baseProps } = props
-
 	return (
 		<BaseSettingsListItem {...baseProps}>
 			{(typeof value === "string" && value !== "") || valueIsText ? (
@@ -38,9 +39,9 @@ export const Info = ({
 			) : (
 				value
 			)}
-			{props.onPress && (
+			{onPress && (
 				<Icon.ChevronRight
-					size={"$listItemAfterIconSize"}
+					size={getTokenValue("$listItemAfterIconSize")}
 					color={"$secondaryColor"}
 				/>
 			)}

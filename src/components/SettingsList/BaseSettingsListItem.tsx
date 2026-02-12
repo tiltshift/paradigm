@@ -13,14 +13,14 @@ export type BaseSettingsListItemProps = {
 
 	icon?: IconComponentType
 	iconColor?: IconComponentProps["color"]
-	children: React.ReactNode
 }
 
 export const BaseSettingsListItem = ({
 	label,
 	icon,
 	iconColor,
-}: BaseSettingsListItemProps) => {
+	children,
+}: BaseSettingsListItemProps & { children: React.ReactNode }) => {
 	const Icon = icon
 
 	return (
@@ -34,6 +34,7 @@ export const BaseSettingsListItem = ({
 			<Text noUserSelect noLineHeight>
 				{label}
 			</Text>
+			{children}
 		</Row>
 	)
 }

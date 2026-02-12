@@ -1,5 +1,3 @@
-import { ScrollView as TGScrollView } from "tamagui"
-
 import preview from "@/storybook/preview"
 import { ListItem } from "../../ListItem"
 import { ScrollView } from "../../ScrollView"

@@ -1,5 +1,4 @@
 import { defaultConfig as defaultTamaguiConfig } from "@tamagui/config/v5"
-import { px } from "@tamagui/core"
 import { type CreateTamaguiProps, createTamagui, createTokens } from "tamagui"
 
 import { Nuntito } from "./fonts"

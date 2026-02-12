@@ -1,6 +1,7 @@
 import { AfterText } from "../AfterText"
 import { Column } from "../View"
 import { Header } from "./Header"
+import { Info } from "./Info"
 
 type SettingsListProps = {
 	/**
@@ -17,11 +18,7 @@ type SettingsListProps = {
 	children: React.ReactNode
 }
 
-export const SettingsList = ({
-	header,
-	footer,
-	children,
-}: SettingsListProps) => {
+const SettingsList = ({ header, footer, children }: SettingsListProps) => {
 	return (
 		<Column>
 			{header && <Header>{header}</Header>}
@@ -30,3 +27,7 @@ export const SettingsList = ({
 		</Column>
 	)
 }
+
+SettingsList.Info = Info
+
+export { SettingsList }
