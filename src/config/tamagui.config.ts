@@ -85,6 +85,7 @@ export const baseConfig = {
 	settings: {
 		...defaultTamaguiConfig.settings,
 		styleCompat: "react-native",
+		defaultPosition: "relative",
 	},
 	tokens: createTokens(baseTokens),
 	fonts: {
