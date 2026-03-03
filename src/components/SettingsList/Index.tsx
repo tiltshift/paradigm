@@ -4,6 +4,7 @@ import { AfterText } from "../AfterText"
 import { Column } from "../View"
 import { Header } from "./Header"
 import { Info } from "./Info"
+import { SettingsSwitch as Switch } from "./Switch"
 
 type SettingsListChild = React.ReactElement<{
 	isFirst: boolean
@@ -48,5 +49,6 @@ const SettingsList = ({ header, footer, children }: SettingsListProps) => {
 }
 
 SettingsList.Info = Info
+SettingsList.Switch = Switch
 
 export { SettingsList }

@@ -24,6 +24,11 @@ export const Story = meta.story({
 				label="this item has a very very long label"
 				value="342435953"
 			/>
+			<SettingsList.Switch
+				label="Switch"
+				value={true}
+				onValueChange={(value) => console.log(value)}
+			/>
 		</SettingsList>
 	),
 })
