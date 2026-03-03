@@ -41,6 +41,7 @@ export const baseTokens = {
 		listItemHeight: 32,
 		mainNavMinWidth: 280,
 		mainNavMaxWidth: 560,
+		settingsListItemHeight: 40,
 	},
 	space: {
 		...defaultParadigmConfig.space,
@@ -54,13 +55,14 @@ export const baseTokens = {
 		listItemBetweenItems: 4,
 		listItemStatusPosition: 6,
 		listItemTextIconSpace: 6,
-		settingsListHeaderPadding: 6,
 		captionVerticalMargin: 6,
+		settingsListItemInnerPadding: 6,
 	},
 	radius: {
 		sm: 2,
 		true: 2,
 		md: 6,
+		container: 9, // meta box, settings list item
 		circle: 400,
 	},
 	zIndex: {

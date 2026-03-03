@@ -10,7 +10,7 @@ export const Header = ({ children }: ListHeaderProps) => {
 				style={Text.style.footnote}
 				color={"$settingsListHeader"}
 				letterCase={Text.letterCase.upper}
-				py={"$settingsListHeaderPadding"}
+				py={"$captionVerticalMargin"}
 				noLineHeight
 				noUserSelect
 			>

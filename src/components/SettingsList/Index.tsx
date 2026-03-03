@@ -1,7 +1,14 @@
+import React from "react"
+
 import { AfterText } from "../AfterText"
 import { Column } from "../View"
 import { Header } from "./Header"
 import { Info } from "./Info"
+
+type SettingsListChild = React.ReactElement<{
+	isFirst: boolean
+	isLast: boolean
+}>
 
 type SettingsListProps = {
 	/**
@@ -15,14 +22,26 @@ type SettingsListProps = {
 	/**
 	 * The content of the settings list. Should be `SettingsList.Item` components.
 	 */
-	children: React.ReactNode
+	children: SettingsListChild | SettingsListChild[]
 }
 
 const SettingsList = ({ header, footer, children }: SettingsListProps) => {
+	const childrenArray = React.Children.toArray(children) as SettingsListChild[]
+
 	return (
 		<Column>
 			{header && <Header>{header}</Header>}
-			{children}
+			{childrenArray.map((child, index) => {
+				const isFirst = index === 0
+				const isLast = index === childrenArray.length - 1
+
+				return React.isValidElement(child)
+					? React.cloneElement(child, {
+							isFirst,
+							isLast,
+						})
+					: child
+			})}
 			{footer && <AfterText>{footer}</AfterText>}
 		</Column>
 	)
