@@ -3,6 +3,8 @@
  * This is then used to create a Tamagui config that drives all the paradigm components.
  */
 
+import type { Themes } from "../utils/theme"
+
 /**
  * Theme spec. These are the values that will change between light and dark mode.
  */
@@ -40,7 +42,7 @@ type ParadigmConfigType = {
 		edgeInset: number
 		edgeInsetClose: number
 	}
-	themes: Record<"light" | "dark", Theme>
+	themes: Record<Themes, Theme>
 }
 
 const special = {
@@ -144,7 +146,7 @@ export const defaultParadigmConfig = {
 			placeholderColor: gray[400],
 			uiStroke: gray[100],
 			cardStock: special.cardStock,
-			background: special.background,
+			background: gray[1000],
 			switchFalseBackground: gray[300],
 			switchTrueBackground: green[500],
 			normalHover: gray[100],
@@ -161,5 +163,5 @@ export const defaultParadigmConfig = {
 } as const satisfies ParadigmConfigType
 
 export type ParadigmConfig = Partial<Omit<ParadigmConfigType, "themes">> & {
-	themes?: Partial<Record<"light" | "dark", Partial<Theme>>>
+	themes?: Partial<Record<Themes, Partial<Theme>>>
 }

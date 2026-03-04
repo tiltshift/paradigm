@@ -4,9 +4,11 @@ import {
 	createTokens,
 	PortalProvider,
 	TamaguiProvider,
+	Theme,
 } from "tamagui"
 
 import { baseConfig } from "../../config/tamagui.config"
+import { systemTheme, Themes, themeQuery } from "../../utils/theme"
 import { View } from "../View"
 
 import type { ParadigmConfig } from "../../config/paradigm.config"
@@ -19,7 +21,38 @@ export const ParadigmProvider: React.FC<{
 	 * Optional Paradigm config to override the default.
 	 */
 	config?: ParadigmConfig
-}> = ({ children, config: overrides }) => {
+	/**
+	 * what theme to use (light/dark) defaults to system value
+	 */
+	theme?: Themes
+}> = ({ children, theme, config: overrides }) => {
+	/**
+	 * 🎨 Theme
+	 */
+	const [currentTheme, setCurrentTheme] = React.useState<Themes>(
+		theme ?? systemTheme,
+	)
+
+	React.useEffect(() => {
+		if (theme) {
+			setCurrentTheme(theme)
+			return
+		}
+
+		setCurrentTheme(systemTheme)
+
+		if (!themeQuery) return
+		const mq = themeQuery
+		const handler = (e: MediaQueryListEvent) =>
+			setCurrentTheme(e.matches ? Themes.dark : Themes.light)
+		mq.addEventListener("change", handler)
+		return () => mq.removeEventListener("change", handler)
+	}, [theme])
+
+	/**
+	 * 🔧 Config
+	 */
+
 	const config = React.useMemo(() => {
 		return createTamagui({
 			...baseConfig,
@@ -53,10 +86,12 @@ export const ParadigmProvider: React.FC<{
 	])
 
 	return (
-		<TamaguiProvider config={config} defaultTheme="light">
-			<PortalProvider shouldAddRootHost>
-				<View fillContainer>{children}</View>
-			</PortalProvider>
+		<TamaguiProvider config={config} defaultTheme={Themes.light}>
+			<Theme name={currentTheme}>
+				<PortalProvider shouldAddRootHost>
+					<View fillContainer>{children}</View>
+				</PortalProvider>
+			</Theme>
 		</TamaguiProvider>
 	)
 }
