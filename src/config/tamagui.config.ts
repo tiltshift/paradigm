@@ -42,6 +42,8 @@ export const baseTokens = {
 		mainNavMinWidth: 280,
 		mainNavMaxWidth: 560,
 		settingsListItemHeight: 40,
+		sliderTrack: 4,
+		sliderHandleSize: 20,
 	},
 	space: {
 		...defaultParadigmConfig.space,
