@@ -4,6 +4,7 @@ import { AfterText } from "../AfterText"
 import { Column } from "../View"
 import { Header } from "./Header"
 import { Info } from "./Info"
+import { SettingsSelect as Select } from "./Select"
 import { SettingsSlider as Slider } from "./Slider"
 import { SettingsSwitch as Switch } from "./Switch"
 
@@ -52,5 +53,6 @@ const SettingsList = ({ header, footer, children }: SettingsListProps) => {
 SettingsList.Info = Info
 SettingsList.Switch = Switch
 SettingsList.Slider = Slider
+SettingsList.Select = Select
 
 export { SettingsList }

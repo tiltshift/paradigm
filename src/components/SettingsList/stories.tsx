@@ -11,6 +11,7 @@ const meta = preview.meta({
 export const Story = meta.story({
 	render: () => {
 		const [sliderValue, setSliderValue] = useState(50)
+		const [selectValue, setSelectValue] = useState("system")
 
 		return (
 			<Column width={380}>
@@ -40,6 +41,16 @@ export const Story = meta.story({
 						label="Slider"
 						value={sliderValue}
 						onValueChange={setSliderValue}
+					/>
+					<SettingsList.Select
+						label="Appearance"
+						value={selectValue}
+						onValueChange={setSelectValue}
+						options={[
+							{ label: "System", value: "system" },
+							{ label: "Light", value: "light" },
+							{ label: "Dark", value: "dark" },
+						]}
 					/>
 				</SettingsList>
 			</Column>
