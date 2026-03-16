@@ -4,6 +4,7 @@ import { AfterText } from "../AfterText"
 import { Column } from "../View"
 import { Header } from "./Header"
 import { Info } from "./Info"
+import { SettingsSlider as Slider } from "./Slider"
 import { SettingsSwitch as Switch } from "./Switch"
 
 type SettingsListChild = React.ReactElement<{
@@ -50,5 +51,6 @@ const SettingsList = ({ header, footer, children }: SettingsListProps) => {
 
 SettingsList.Info = Info
 SettingsList.Switch = Switch
+SettingsList.Slider = Slider
 
 export { SettingsList }

@@ -3,7 +3,9 @@ import { useState } from "react"
 
 import { Pressable } from "../Button"
 
-export type SliderProps = {
+import type { ViewProps } from "../View"
+
+export type SliderProps = ViewProps & {
 	/**
 	 * current slider value (controlled)
 	 */
@@ -19,7 +21,7 @@ export type SliderProps = {
 	/**
 	 * Whether the slider is disabled
 	 */
-	disabled?: boolean
+	isDisabled?: boolean
 	/**
 	 * minimum value of slider (default: 0)
 	 */
@@ -38,10 +40,11 @@ export const Slider = ({
 	value,
 	defaultValue,
 	onValueChange,
-	disabled = false,
+	isDisabled = false,
 	min = 0,
 	max = 100,
 	step,
+	...otherProps
 }: SliderProps) => {
 	const [isFocused, setIsFocused] = useState(false)
 
@@ -53,12 +56,13 @@ export const Slider = ({
 				const v = vals[0]
 				if (v !== undefined) onValueChange?.(v)
 			}}
-			disabled={disabled}
+			disabled={isDisabled}
 			min={min}
 			max={max}
 			{...(step !== undefined && { step })}
-			opacity={disabled ? 0.6 : 1}
+			opacity={isDisabled ? 0.6 : 1}
 			flexGrow={1}
+			{...otherProps}
 		>
 			<TamaguiSlider.Track
 				height={"$sliderTrack"}
@@ -74,7 +78,7 @@ export const Slider = ({
 				top={2}
 				width={"$sliderHandleSize"}
 				height={"$sliderHandleSize"}
-				cursor={disabled ? "not-allowed" : "pointer"}
+				cursor={isDisabled ? "not-allowed" : "pointer"}
 				outlineStyle="none"
 				onFocus={() => setIsFocused(true)}
 				onBlur={() => setIsFocused(false)}
@@ -83,7 +87,7 @@ export const Slider = ({
 					grow
 					radius={"$circle"}
 					isRaised
-					isDisabled={disabled}
+					isDisabled={isDisabled}
 					isPrimary={isFocused}
 					// TODO: use isFocused for custom focus styles
 				/>

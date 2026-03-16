@@ -31,7 +31,7 @@ const ControlledSlider: React.FC<{
 				{...(min !== undefined && { min })}
 				{...(max !== undefined && { max })}
 				{...(step !== undefined && { step })}
-				{...(disabled !== undefined && { disabled })}
+				{...(disabled !== undefined && { isDisabled: disabled })}
 			/>
 		</Column>
 	)

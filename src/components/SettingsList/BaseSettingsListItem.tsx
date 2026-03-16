@@ -74,7 +74,7 @@ export const BaseSettingsListItem = ({
 				borderBottomColor={"$uiStroke"}
 				alignItems="center"
 			>
-				<Row grow justifyContent="space-between">
+				<Row grow justifyContent="space-between" align="center">
 					<Text
 						noUserSelect
 						noLineHeight
@@ -85,7 +85,9 @@ export const BaseSettingsListItem = ({
 					>
 						{label}
 					</Text>
-					<Row noShrink>{children}</Row>
+					<Row grow noShrink justifyContent="flex-end">
+						{children}
+					</Row>
 				</Row>
 				{onPress && (
 					<Icon.ChevronRight

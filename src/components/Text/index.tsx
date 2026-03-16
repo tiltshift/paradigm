@@ -22,7 +22,7 @@ const defaults = {
 	fit: fitValues.ellipsis,
 }
 
-type TextProps = {
+export type TextProps = {
 	/**
 	 * the text style to use.
 	 */
