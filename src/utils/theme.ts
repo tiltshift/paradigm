@@ -1,6 +1,7 @@
 export enum Themes {
 	light = "light",
 	dark = "dark",
+	system = "system",
 }
 
 export const themeQuery =
@@ -14,4 +15,3 @@ export const themeQuery =
 export const systemTheme: Themes.light | Themes.dark = themeQuery?.matches
 	? Themes.dark
 	: Themes.light
-

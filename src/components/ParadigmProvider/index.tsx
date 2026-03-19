@@ -34,7 +34,8 @@ export const ParadigmProvider: React.FC<{
 	)
 
 	React.useEffect(() => {
-		if (theme) {
+		// if the theme is light or dark set that and be done.
+		if (theme && theme !== Themes.system) {
 			setCurrentTheme(theme)
 			return
 		}
