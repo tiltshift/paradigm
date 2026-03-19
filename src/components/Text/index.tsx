@@ -1,8 +1,5 @@
 import React from "react"
-import {
-	SizableText as TamaguiText,
-	type TextProps as TamaguiTextProps,
-} from "tamagui"
+import { SizableText as TamaguiText, type TextStyle } from "tamagui"
 
 import { FontKey } from "../../config/fonts"
 import { pluralize } from "../../utils/pluralize"
@@ -12,12 +9,8 @@ import {
 	letterCase as letterCaseValues,
 } from "./letterCase"
 
-import type {
-	TextProps as NativeTextProps,
-	StyleProp,
-	TextStyle,
-} from "react-native"
-import type { SpaceProps } from "../../config/shorthands"
+import type { TextProps as NativeTextProps, StyleProp } from "react-native"
+import type { ColorValue } from "../../utils/color"
 
 enum fitValues {
 	ellipsis = "ellipsis",
@@ -29,7 +22,7 @@ const defaults = {
 	fit: fitValues.ellipsis,
 }
 
-type TextProps = {
+export type TextProps = {
 	/**
 	 * the text style to use.
 	 */
@@ -52,7 +45,7 @@ type TextProps = {
 	/**
 	 * a color override
 	 */
-	color?: TamaguiTextProps["color"]
+	color?: ColorValue
 	/**
 	 * Set this to `true` to remove the line height set via `style`. Useful for when you want text vertically centered.
 	 */
@@ -81,7 +74,7 @@ type TextProps = {
 	 * Children
 	 */
 	children?: string | React.ReactNode
-} & SpaceProps
+} & TextStyle
 
 const Text: React.FC<TextProps> & {
 	style: typeof FontKey

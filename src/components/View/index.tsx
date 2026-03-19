@@ -11,6 +11,7 @@ import { useShadow } from "../../hooks/useShadow"
 
 import type { ViewProps as RNViewProps } from "react-native"
 import type { ShadowName } from "../../generated/shadows"
+import type { ColorValue } from "../../utils/color"
 
 export type ViewProps = {
 	ref?: React.Ref<TamaguiElement>
@@ -26,7 +27,7 @@ export type ViewProps = {
 	 * the background color of this view. Should come from useTheme() ideally with .get()
 	 * https://tamagui.dev/docs/core/use-theme
 	 */
-	color?: TamaguiViewProps["backgroundColor"]
+	color?: ColorValue
 	children?: React.ReactNode
 	/**
 	 * The width
@@ -98,7 +99,7 @@ export const ViewContext = React.createContext<{
 	/**
 	 * The color of the parent view's background. Used for things like coloring shadows.
 	 */
-	color: TamaguiViewProps["backgroundColor"] | undefined
+	color: ColorValue | undefined
 }>({ color: undefined })
 
 const View = (props: ViewProps) => {

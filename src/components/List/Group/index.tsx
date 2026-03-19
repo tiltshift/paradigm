@@ -10,10 +10,11 @@ import type { ScrollViewProps } from "react-native"
  */
 export type ExternalListGroupProps = {
 	/**
+	 * TODO Reimplement this
 	 * By default list contents are limited by the narrow/wide media breakpoint.
 	 * Set this to `true` to override this behavior.
 	 */
-	isFullWidth?: boolean
+	// isFullWidth?: boolean
 	/**
 	 * the background color for the group
 	 */
@@ -40,48 +41,45 @@ export type ListGroupProps = ExternalListGroupProps & {
 	onLayout?: ScrollViewProps["onLayout"]
 }
 
-export const IsInListGroupContext = React.createContext(false)
+export const ListGroupContext = React.createContext({
+	groupId: undefined as string | undefined,
+	isInGroup: false,
+})
 
 export const ListGroup = React.memo<ListGroupProps>(function ListGroup({
-	isFullWidth = false,
+	// isFullWidth = false,
 	noScrollView = false,
 	children,
 	color,
 	onLayout,
 	between,
 }) {
-	const [onlyOneChild, setOnlyOneChild] = React.useState(false)
-
+	const groupId = React.useId()
 	const isInScrollView = React.useContext(ScrollView.IsInContext)
-	const isInListGroup = React.useContext(IsInListGroupContext)
-
-	React.useEffect(() => {
-		setOnlyOneChild(React.Children.count(children) === 1)
-	}, [children])
-
-	// if we have more than one child wrap in a column with between set
+	const { isInGroup } = React.useContext(ListGroupContext)
 
 	const listGroupContent = (
-		<IsInListGroupContext value={true}>
-			{onlyOneChild ? (
-				children
-			) : (
-				<Column between={between || "$betweenLists"} pb={"$betweenLists"}>
-					{children}
-				</Column>
-			)}
-		</IsInListGroupContext>
+		<ListGroupContext value={{ groupId, isInGroup: true }}>
+			<Column
+				grow
+				py={"$listVerticalSpace"}
+				between={between || "$betweenLists"}
+			>
+				{children}
+			</Column>
+		</ListGroupContext>
 	)
 
-	if (!isInListGroup && !isInScrollView && !noScrollView) {
+	if (!isInGroup && !isInScrollView && !noScrollView) {
 		return (
 			<ScrollView
 				alwaysBounceVertical
 				keyboardDismissMode="interactive"
 				keyboardShouldPersistTaps="handled"
 				onLayout={onLayout}
-				{...(isFullWidth && { flexGrow: 1 })}
+				// {...(isFullWidth && { flexGrow: 1 })}
 				color={color}
+				contentContainerStyle={{ flexGrow: 1 }}
 			>
 				{listGroupContent}
 			</ScrollView>

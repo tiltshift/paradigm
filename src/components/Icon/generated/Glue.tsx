@@ -1,10 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const GlueIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -20,15 +20,15 @@ const GlueIcon = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 )
-const Glue: WebIconComponentType = ({
-	size,
+const Glue = ({
+	size: sizeKey,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill = color || (isInText ? theme.iconInTextColor.get() : "black")
+	const size = getTokenValue(`$icon.${sizeKey}`)
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -41,4 +41,13 @@ const Glue: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Glue
+const StyledIcon = styled(
+	Glue,
+	{},
+	{
+		accept: {
+			color: "color",
+		} as const,
+	},
+)
+export default StyledIcon

@@ -30,7 +30,7 @@ const transition = {
 	bounce: 0.2,
 } satisfies Transition
 
-type SwitchProps = {
+export type SwitchProps = {
 	value: boolean
 	onValueChange?: ((value: boolean) => void) | undefined
 	isDisabled?: boolean | undefined

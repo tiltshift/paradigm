@@ -28,3 +28,6 @@ storybook-static
 
 # env
 .env
+
+# for monorepo use
+yarn.lock

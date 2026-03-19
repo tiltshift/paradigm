@@ -1,12 +1,14 @@
 import type { SVGProps } from "react"
+import type { IconSizes } from "../../config/tamagui.config"
 
-export type WebIconComponentProps = {
-	size: number
+/**
+ * Types before we add tamagui to the icon
+ */
+export type RawWebIconComponentProps = {
+	size: IconSizes
 	color?: string
 	style?: Omit<
 		SVGProps<SVGSVGElement>["style"],
 		"backgroundColor" | "width" | "height"
 	>
 }
-
-export type WebIconComponentType = React.FC<WebIconComponentProps> // & SvgProps

@@ -5,7 +5,7 @@ import { Loading } from "../../Loading"
 import { ScrollView } from "../../ScrollView"
 import { Column } from "../../View"
 import { EmptyContent } from "../EmptyContent"
-import { IsInListGroupContext, ListGroup, type ListGroupProps } from "../Group"
+import { ListGroup, ListGroupContext, type ListGroupProps } from "../Group"
 import { Header } from "../Header"
 
 /**
@@ -24,16 +24,10 @@ export type ExternalWrapperProps = {
 		| undefined
 	/**
 	 * Anything you want to render before the list (within its scrollview) goes here.
-	 *
-	 * Note this is only rendered by the wrapper when the list is empty or loading.
-	 * Otherwise the list itself should handle it
 	 */
 	beforeList?: React.ReactElement | undefined
 	/**
 	 * Anything you want to render after the list (within its scrollview) goes here.
-	 *
-	 * Note this is only rendered by the wrapper when the list is empty or loading.
-	 * Otherwise the list itself should handle it
 	 */
 	afterList?: React.ReactElement | undefined
 	/**
@@ -74,17 +68,18 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 	beforeList,
 	afterList,
 	header,
+	color,
 	...listGroupProps
 }) {
 	const isInScrollView = React.useContext(ScrollView.IsInContext)
-	const isInListGroup = React.useContext(IsInListGroupContext)
+	const { isInGroup } = React.useContext(ListGroupContext)
 
-	if (Object.keys(listGroupProps).length > 0 && isInListGroup)
+	if (Object.keys(listGroupProps).length > 0 && isInGroup)
 		return (
 			<ComponentError text="This list is already in a group so any `List.Group` props will be ignored" />
 		)
 
-	if (isInListGroup && isVirtual)
+	if (isInGroup && isVirtual)
 		return (
 			<ComponentError text="Virtual Lists can not be grouped (under `List.Group`)" />
 		)
@@ -94,22 +89,27 @@ export const ListWrapper = React.memo<ListWrapperProps>(function ListWrapper({
 			<ComponentError text="Virtual Lists should not exist under a `ScrollView`" />
 		)
 
-	let wrapperContent = <Column>{children}</Column>
+	const wrapperContent = <Column>{children}</Column>
 
 	if (isLoading || isEmpty) {
-		wrapperContent = (
-			<Column>
+		return (
+			<>
 				{beforeList}
 				{header && <Header>{header}</Header>}
-				{isLoading ? <Loading /> : <EmptyContent>{emptyContent}</EmptyContent>}
+				{isLoading ? (
+					<Loading />
+				) : (
+					<EmptyContent color={color}>{emptyContent}</EmptyContent>
+				)}
 				{afterList}
-			</Column>
+			</>
 		)
 	}
 
-	if (!isInScrollView && !isInListGroup)
+	if (!isInScrollView && !isInGroup)
 		return (
 			<ListGroup
+				color={color}
 				{...listGroupProps}
 				noScrollView={isVirtual && !isEmpty && !isLoading}
 			>

@@ -12,8 +12,9 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version-file: .node-version
-        cache: yarn
 
     - name: Install dependencies
-      run: yarn install --immutable
+      run: yarn install --no-immutable
       shell: bash
+      env:
+        YARN_ENABLE_HARDENED_MODE: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork && '1' || '0' }}

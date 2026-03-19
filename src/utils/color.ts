@@ -1,5 +1,9 @@
 import { type Color, converter, formatRgb } from "culori"
 
+import type { ViewProps as TamaguiViewProps } from "tamagui"
+
+export type ColorValue = TamaguiViewProps["backgroundColor"]
+
 const rgbConverter = converter("rgb")
 
 export const changeColorAlpha = (color: string | Color, alpha: number) => {

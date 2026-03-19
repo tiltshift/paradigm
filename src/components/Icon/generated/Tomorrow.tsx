@@ -1,10 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const TomorrowIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -38,15 +38,15 @@ const TomorrowIcon = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 )
-const Tomorrow: WebIconComponentType = ({
-	size,
+const Tomorrow = ({
+	size: sizeKey,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill = color || (isInText ? theme.iconInTextColor.get() : "black")
+	const size = getTokenValue(`$icon.${sizeKey}`)
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -59,4 +59,13 @@ const Tomorrow: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Tomorrow
+const StyledIcon = styled(
+	Tomorrow,
+	{},
+	{
+		accept: {
+			color: "color",
+		} as const,
+	},
+)
+export default StyledIcon

@@ -1,4 +1,4 @@
-import { getToken, useTheme } from "tamagui"
+import { getToken } from "tamagui"
 
 import { Text } from "../Text"
 import { Column, Row, View, type ViewProps } from "../View"
@@ -53,7 +53,6 @@ export const ListItem = ({
 	isSelected,
 	afterLabelIcon: AfterLabelIcon,
 }: ListItemProps) => {
-	const theme = useTheme()
 	const {
 		color: { primaryTextColor, secondaryTextColor },
 		baseListItemProps,
@@ -86,7 +85,7 @@ export const ListItem = ({
 									? "$listItemFirstLineIconSize"
 									: "$listItemInteriorIconSize",
 							)}
-							color={theme.placeholderColor.get()}
+							color={"$placeholderColor"}
 						/>
 					</View>
 				)}

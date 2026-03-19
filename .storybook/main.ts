@@ -30,7 +30,6 @@ export default defineMain({
 				tamaguiPlugin({
 					config: "./src/config/tamagui.config.ts",
 					components: ["tamagui"],
-					optimize: true,
 				}),
 			],
 			build: {

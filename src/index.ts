@@ -5,8 +5,6 @@ export { baseTokens as tokens } from "./config/tamagui.config"
 
 // Components
 
-// Components
-
 export * from "./components/Button"
 export * from "./components/Icon"
 export * from "./components/Layout"
@@ -14,6 +12,8 @@ export * from "./components/List"
 export * from "./components/ListItem"
 export * from "./components/ParadigmProvider"
 export * from "./components/ScrollView"
+export * from "./components/SettingsList"
+export * from "./components/Slider"
 export * from "./components/Text"
 export * from "./components/TextInput"
 export * from "./components/View"
@@ -25,6 +25,7 @@ export * from "./components/View"
 export * from "./utils/platform"
 export * from "./utils/pluralize"
 export * from "./utils/preventBounceScroll"
+export * from "./utils/theme"
 
 // etc
 

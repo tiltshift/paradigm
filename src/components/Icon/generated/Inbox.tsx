@@ -1,10 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const InboxIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -22,15 +22,15 @@ const InboxIcon = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 )
-const Inbox: WebIconComponentType = ({
-	size,
+const Inbox = ({
+	size: sizeKey,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill = color || (isInText ? theme.iconInTextColor.get() : "black")
+	const size = getTokenValue(`$icon.${sizeKey}`)
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -43,4 +43,13 @@ const Inbox: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Inbox
+const StyledIcon = styled(
+	Inbox,
+	{},
+	{
+		accept: {
+			color: "color",
+		} as const,
+	},
+)
+export default StyledIcon

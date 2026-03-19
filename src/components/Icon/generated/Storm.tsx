@@ -1,10 +1,10 @@
-import { useTheme } from "@tamagui/core"
+import { getTokenValue, styled } from "@tamagui/core"
 import * as React from "react"
 
 import { TextContext } from "../../Text"
 
 import type { SVGProps } from "react"
-import type { WebIconComponentType } from "../types"
+import type { RawWebIconComponentProps } from "../types"
 
 const StormIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -22,15 +22,15 @@ const StormIcon = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 )
-const Storm: WebIconComponentType = ({
-	size,
+const Storm = ({
+	size: sizeKey,
 	color,
 	style = {},
 	...otherProps
-}) => {
-	const theme = useTheme()
+}: RawWebIconComponentProps) => {
 	const { isInText } = React.useContext(TextContext)
-	const fill = color || (isInText ? theme.iconInTextColor.get() : "black")
+	const size = getTokenValue(`$icon.${sizeKey}`)
+	const fill = color || (isInText ? "$iconInTextColor" : "black")
 	const combinedStyle = {
 		flexShrink: 0,
 		...style,
@@ -43,4 +43,13 @@ const Storm: WebIconComponentType = ({
 		fill,
 	})
 }
-export default Storm
+const StyledIcon = styled(
+	Storm,
+	{},
+	{
+		accept: {
+			color: "color",
+		} as const,
+	},
+)
+export default StyledIcon

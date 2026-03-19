@@ -1,6 +1,8 @@
 import { AnimatePresence } from "motion/react"
+import React from "react"
 
 import { animations } from "../../config/animation.config"
+import { ListGroupContext } from "../List/Group"
 import { MotionView } from "../View"
 
 export type StatusHandlerProps = {
@@ -15,19 +17,20 @@ export const StatusHandler = ({
 	isActive,
 	isSelected,
 }: StatusHandlerProps) => {
+	const { groupId } = React.useContext(ListGroupContext)
 	return (
 		<>
 			<AnimatePresence>
 				{isHovered && (
 					<MotionView
 						fillContainer
-						layoutId="hovered"
+						layoutId={`hovered-${groupId}`}
 						color={"$normalHover"}
 						style={{ opacity: 0.5 }}
 						initial={{ opacity: 0 }}
 						exit={{ opacity: 0 }}
 						animate={{ opacity: 0.5 }}
-						transition={animations.slideSpring}
+						transition={animations.quickSpring}
 						radius={"$md"}
 						layoutDependency={isHovered}
 					/>
@@ -41,7 +44,7 @@ export const StatusHandler = ({
 					initial={{ opacity: 0 }}
 					exit={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={animations.slideSpring}
+					transition={animations.quickSpring}
 					color={"$listItemActive"}
 					radius={"$md"}
 				/>
@@ -50,9 +53,9 @@ export const StatusHandler = ({
 			{isSelected && (
 				<MotionView
 					fillContainer
-					layoutId="selected"
+					layoutId={`selected-${groupId}`}
 					// style={{ opacity: 0.25 }}
-					transition={animations.slideSpring}
+					transition={animations.quickSpring}
 					color={"$listItemSelected"}
 					radius={"$md"}
 					layoutDependency={isSelected}
