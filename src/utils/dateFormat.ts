@@ -20,14 +20,7 @@ export type DateTimeFormat = {
 	isTabular?: boolean
 }
 
-/** Validates each format's metadata while preserving its option name in the return type. */
-function createDateFormatOptions<K extends PropertyKey>(
-	o: Record<K, DateTimeFormat>,
-): Record<K, DateTimeFormat> {
-	return o
-}
-
-export const dateFormat = createDateFormatOptions({
+export const dateFormat = {
 	/**
 	 * 8:01 AM
 	 */
@@ -120,4 +113,4 @@ export const dateFormat = createDateFormatOptions({
 		updateWithValue: false,
 		isTabular: false,
 	},
-})
+} satisfies Record<string, DateTimeFormat>
