@@ -23,6 +23,8 @@ export * from "./components/View"
 // utils
 
 export * from "./utils"
+export * from "./utils/platform"
+export * from "./utils/preventBounceScroll"
 
 // etc
 
