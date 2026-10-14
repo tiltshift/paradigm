@@ -3,7 +3,6 @@ import { DateTime as luxon } from "luxon"
 export type DateTimeFormat = {
 	/**
 	 * A function that takes a dateTime and returns a string to display to the user.
-	 * Formatting uses the DateTime's own locale and zone, so a server caller sets both when it builds the DateTime; a browser inherits them.
 	 */
 	formatDateTime: (dateTime: luxon) => string
 	/**
