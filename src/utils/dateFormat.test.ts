@@ -1,7 +1,7 @@
 import { DateTime } from "luxon"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import { dateFormat } from "./dateFormat"
+import { dateFormat } from "./index"
 
 describe("dateFormat", () => {
 	const birthday = DateTime.fromISO("1981-06-18", {
