@@ -22,10 +22,7 @@ export * from "./components/View"
 
 // utils
 
-export * from "./utils/dateFormat"
-export * from "./utils/platform"
-export * from "./utils/pluralize"
-export * from "./utils/preventBounceScroll"
+export * from "./utils"
 
 // etc
 
