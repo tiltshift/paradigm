@@ -592,6 +592,7 @@ __metadata:
     "@tamagui/config": "npm:1.137.3"
     "@tamagui/vite-plugin": "npm:1.137.3"
     "@types/culori": "npm:^4"
+    "@types/luxon": "npm:^3.7.6"
     "@types/node": "npm:^22.10.2"
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:^19.2.0"
@@ -606,6 +607,7 @@ __metadata:
     culori: "npm:^4.0.2"
     dotenv: "npm:^17.2.3"
     jsdom: "npm:^27.0.0"
+    luxon: "npm:^3.7.2"
     motion: "npm:^12.23.26"
     patch-package: "npm:^8.0.1"
     playwright: "npm:^1.56.1"
@@ -4083,6 +4085,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/luxon@npm:^3.7.6":
+  version: 3.7.6
+  resolution: "@types/luxon@npm:3.7.6"
+  checksum: 10/2bc7a58b2cf231455085314821fe9b05a8e97cef2447d8da50be0a8794f0ddfa6d4bbd18eb6259ee881be0da0d08843ce66830a30d5926a25981f91bd5f588a9
+  languageName: node
+  linkType: hard
+
 "@types/mdx@npm:^2.0.0":
   version: 2.0.13
   resolution: "@types/mdx@npm:2.0.13"
@@ -7058,6 +7067,13 @@ __metadata:
   dependencies:
     yallist: "npm:^3.0.2"
   checksum: 10/951d2673dcc64a7fb888bf3d13bc2fdf923faca97d89cdb405ba3dfff77e2b26e5798d405e78fcd7094c9e7b8b4dab2ddc5a4f8a11928af24a207b7c738ca3f8
+  languageName: node
+  linkType: hard
+
+"luxon@npm:^3.7.2":
+  version: 3.7.2
+  resolution: "luxon@npm:3.7.2"
+  checksum: 10/b24cd205ed306ce7415991687897dcc4027921ae413c9116590bc33a95f93b86ce52cf74ba72b4f5c5ab1c10090517f54ac8edfb127c049e0bf55b90dc2260be
   languageName: node
   linkType: hard
 
